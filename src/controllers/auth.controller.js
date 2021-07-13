@@ -6,8 +6,6 @@ export const signup = async (req, res) => {
   const { username, email, password } = req.body;
   console.log("aqui");
 
-  //const userFound = User.find({email})
-
   const newUser = new User({
     username,
     email,
@@ -38,5 +36,10 @@ export const signin = async (req, res) => {
   const token = jwt.sign({ id: userFound._id }, config.SECRET, {
     expiresIn: 86400, //24 horas
   });
-  res.json({ token: token });
+  res
+    .status(200)
+    .json({
+      token: token,
+      user: { name: userFound.username, id: userFound._id },
+    });
 };

@@ -1,14 +1,16 @@
-import strictTransportSecurity from 'helmet/dist/middlewares/strict-transport-security';
-import {Schema,model} from 'mongoose';
+import strictTransportSecurity from "helmet/dist/middlewares/strict-transport-security";
+import { Schema, model } from "mongoose";
 
-const tweetSchema = Schema({
-    name:String,
-    category:String,
-    price:Number,
-    imgURL:String    
-},{
-    timestamps:true,
-    versionKey:false
-})
+const tweetSchema = Schema(
+  {
+    username: { type: String, require: true },
+    id_user: { type: String, require: true },
+    comment: { type: String, require: true },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
-export default model('Tweet',tweetSchema);
+export default model("Tweet", tweetSchema);

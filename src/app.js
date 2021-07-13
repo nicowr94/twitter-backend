@@ -6,6 +6,7 @@ import { createUser } from "./libs/initialSetup";
 
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/users.routes";
+import tweetRoutes from "./routes/tweet.routes";
 
 const app = express();
 createUser(); //proximamente
@@ -30,5 +31,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/tweet", tweetRoutes);
 
 export default app;
